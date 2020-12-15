@@ -6,11 +6,42 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue Style Transition</title>
+    <style>
+        .red {
+            color: red;
+        }
+        h3 {
+            text-align: center;
+        }
+
+        .bounce-enter-active {
+            animation: bounce-in 0.5s;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50%{
+                transform: scale(2);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 <body>
 
     <div id="app">
         <h1>{{ title }}</h1>
+        <p :class="{ 'red': verif }"> {{ text }}</p>
+        <h2 :style="{ 'backgroundColor' : 'blue' }">Subtitle</h2>
+
+        <a href="#" @click="animate()">ANIMATE !</a>
+        <transition name="bounce">
+            <h3 v-show="display">TRANSITION</h3>
+        </transition>
 
     </div>
 
